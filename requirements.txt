@@ -1,5 +1,5 @@
 aiohttp==2.3.9
-alembic==0.9.8
+alembic==0.9.7
 SQLAlchemy==1.2.1
 coverage==4.2
 cchardet==2.1.1

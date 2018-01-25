@@ -1,18 +1,16 @@
 # coding: utf-8
-from sqlalchemy import Boolean, Column, Date, Integer, \
-    MetaData, String, Table, PrimaryKeyConstraint
+from sqlalchemy import Boolean, Column, Date, Integer, String
+from sqlalchemy.ext.declarative import declarative_base
 
-meta = MetaData()
+Base = declarative_base()
 
-patient = Table(
-    "patient", meta,
-    Column("id", Integer, nullable=False),
-    Column("first_name", String(255), nullable=False),
-    Column("last_name", String(255), nullable=False),
-    Column("cpf", String(14), nullable=False),
-    Column("date_of_birth", Date, nullable=False),
-    Column("gender", Boolean, nullable=False),
-    Column("active", Boolean, nullable=False)
-)
 
-PrimaryKeyConstraint("id", name="patient_id_pkey")
+class Patient(Base):
+    __tablename__ = "patient"
+    id = Column(Integer, primary_key=True, nullable=False),
+    first_name = Column(String(255), nullable=False),
+    last_name = Column(String(255), nullable=False),
+    cpf = Column(String(14), nullable=False),
+    date_of_birth = Column(Date, nullable=False),
+    gender = Column(Boolean, nullable=False),
+    active = Column(Boolean, default=True, nullable=False)

@@ -1,14 +1,11 @@
 # coding: utf-8
-from sqlalchemy import Boolean, Column, Integer, \
-    MetaData, String, Table, PrimaryKeyConstraint
+from sqlalchemy import Boolean, Column, Integer, String
+from sqlalchemy.ext.declarative import declarative_base
 
-meta = MetaData()
+Base = declarative_base()
 
-procedure = Table(
-    "procedure", meta,
-    Column("id", Integer, nullable=False),
-    Column("name", String(255), nullable=False),
-    Column("active", Boolean, nullable=False)
-)
 
-PrimaryKeyConstraint("id", name="procedure_id_pkey")
+class Procedure(Base):
+    id = Column(Integer, primary_key=True, nullable=False),
+    name = Column(String(255), nullable=False),
+    active = Column(Boolean, default=True, nullable=False)
