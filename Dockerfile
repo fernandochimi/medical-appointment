@@ -1,12 +1,13 @@
 FROM python:3.6.4-alpine
 
 RUN apk update && \
-        apk add git \
-        sqlite-dev
+	apk add git \
+	build-base \
+	postgresql-dev
 
 RUN mkdir -p /medical-appointment
 
-WORKDIR /quotes
+WORKDIR /medical-appointment
 
 COPY ./requirements.txt /medical-appointment/
 

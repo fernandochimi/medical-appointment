@@ -1,4 +1,4 @@
-PROJECT_ID := medical_appointment
+PROJECT_ID := medical-appointment
 DCMP = docker-compose
 
 build:

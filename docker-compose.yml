@@ -1,6 +1,6 @@
 version: '3'
 services:
-  quotes:
+  medical_apppointment:
     restart: always
     build: .
     command: python src/run.py
@@ -8,3 +8,14 @@ services:
       - .:/medical-appointment
     ports:
       - "8000:8000"
+    depends_on:
+      - db
+  db:
+    image: postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: medical_apppointment
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
