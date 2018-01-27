@@ -1,11 +1,12 @@
 # coding: utf-8
-from sqlalchemy import Boolean, Column, Integer, String
-from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import Boolean, Column, Integer, String, Table
 
-Base = declarative_base()
+from models import META
 
 
-class Procedure(Base):
-    id = Column(Integer, primary_key=True, nullable=False),
-    name = Column(String(255), nullable=False),
-    active = Column(Boolean, default=True, nullable=False)
+procedure = Table(
+    "procedure", META,
+    Column("id", Integer, primary_key=True, nullable=False),
+    Column("name", String(255), nullable=False),
+    Column("active", Boolean, default=True, nullable=False)
+)

@@ -1,10 +1,10 @@
 # coding: utf-8
 import aiopg.sa
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker, scoped_session
-from sqlalchemy.pool import NullPool
+from sqlalchemy import MetaData
 
 from utils import import_env_variables
+
+META = MetaData()
 
 
 async def init_pg(app):

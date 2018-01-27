@@ -1,17 +1,16 @@
 # coding: utf-8
-from sqlalchemy import Column, DateTime, ForeignKey, func, Integer
-from sqlalchemy.orm import relationship
-from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import Column, DateTime, ForeignKey, func, Integer, Table
 
-Base = declarative_base()
+from models import META
 
 
-class Appointment(Base):
-    __tablename__ = "appointment"
-    id = Column("id", Integer, primary_key=True, nullable=False)
-    patient_id = Column(Integer, ForeignKey("patient.id"), nullable=False)
-    procedure_id = Column(Integer, ForeignKey("procedure.id"), nullable=False)
-    start_date = Column(DateTime, default=func.now(), nullable=False)
-    end_date = Column(DateTime)
-    patient = relationship("Patient")
-    procedure = relationship("Procedure")
+appointment = Table(
+    "appointment", META,
+    Column("id", Integer, primary_key=True, nullable=False),
+    Column("patient_id", Integer, ForeignKey("patient.id"), nullable=False),
+    Column("procedure_id", Integer,
+           ForeignKey("procedure.id"), nullable=False),
+    Column("start_date", DateTime(timezone=True),
+           default=func.now(), nullable=False),
+    Column("end_date", DateTime(timezone=True))
+)
