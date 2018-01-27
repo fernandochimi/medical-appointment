@@ -23,6 +23,6 @@ class AppointmentResource:
                 appointment = await get_appointment(conn, request)
             except RecordNotFound as e:
                 raise web.HTTPNotFound(text=str(e))
-            else:
-                raise web.HTTPClientError(text=DataTypeError)
+            except TypeError:
+                return web.HTTPServerError(text=str(DataTypeError))
             return web.json_response(appointment)

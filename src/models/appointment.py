@@ -1,8 +1,9 @@
 # coding: utf-8
+from aiohttp import web
 from sqlalchemy import Column, DateTime, ForeignKey, func, Integer, Table
 
 from models import META, RecordNotFound, DataTypeError
-from utils import int_values
+from utils import validate_int_values
 
 
 appointment = Table(
@@ -18,10 +19,10 @@ appointment = Table(
 
 
 async def get_appointment(conn, request):
-    appointment_id = int_values(request.match_info["appointment_id"])
+    appointment_id = validate_int_values(request.match_info["appointment_id"])
     if appointment_id is False:
-        raise DataTypeError(
-            "This is not a valid id for appointment")
+        msg = "This is not a valid id for appointment"
+        raise DataTypeError(msg)
 
     result = await conn.execute(
         appointment.select()
