@@ -1,7 +1,8 @@
 # coding: utf-8
 from sqlalchemy import Column, DateTime, ForeignKey, func, Integer, Table
 
-from models import META
+from models import META, RecordNotFound, DataTypeError
+from utils import int_values
 
 
 appointment = Table(
@@ -14,3 +15,21 @@ appointment = Table(
            default=func.now(), nullable=False),
     Column("end_date", DateTime(timezone=True))
 )
+
+
+async def get_appointment(conn, request):
+    appointment_id = int_values(request.match_info["appointment_id"])
+    if appointment_id is False:
+        raise DataTypeError(
+            "This is not a valid id for appointment")
+
+    result = await conn.execute(
+        appointment.select()
+        .where(appointment.c.id == appointment_id))
+    appointment_data = await result.first()
+
+    if not appointment_data:
+        msg = "Appointment with id: {} does not exists"
+        raise RecordNotFound(msg.format(appointment_id))
+
+    return appointment_data

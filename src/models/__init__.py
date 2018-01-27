@@ -20,3 +20,11 @@ async def init_pg(app):
 async def close_pg(app):
     app["db"].close()
     await app["db"].wait_closed()
+
+
+class RecordNotFound(Exception):
+    """Requested record in database was not found"""
+
+
+class DataTypeError(Exception):
+    """Data not compatible"""
