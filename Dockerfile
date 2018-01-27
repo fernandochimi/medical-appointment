@@ -17,5 +17,3 @@ COPY ./requirements.txt /medical-appointment/
 RUN pip install -r requirements.txt
 
 ADD . /medical-appointment/
-
-RUN alembic init migrations

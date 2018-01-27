@@ -5,6 +5,9 @@ build:
 		${DCMP} build
 
 start:
+		${DCMP} up
+
+startd:
 		${DCMP} up -d
 
 stop:
@@ -16,22 +19,11 @@ clean:
 		rm -rf .coverage
 		rm -rf *.log
 
-test:
-		${DCMP} -p $(PROJECT_ID) run web coverage run \
-			--source="src" \
-			--omit="../../**migrations**, ../../**tests**" \
-			--failfast
-
-report:
-		${DCMP} -p $(PROJECT_ID) run web coverage report -m
-
 execute:
 		sudo chown -R $(USER):$(USER) .
 		${MAKE} clean
 		${MAKE} build
-		${MAKE} start
-		${MAKE} test
-		${MAKE} report
+		${MAKE} startd
 
 html:
 		${DCMP} -p $(PROJECT_ID) run web coverage html

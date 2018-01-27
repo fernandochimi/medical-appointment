@@ -8,8 +8,11 @@ Check if you have a Git in your machine. If don't, please install [Git](https://
 ## Run application
 1. First, clone this repository into your local machine:
 `git clone git@github.com:medical-appointment/fernando_chimicoviaki.git`
-2. Run `make execute to build and run the application
-3. In your browser, access `http://localhost:8000` to see the project
+2. Run `make execute` to build and run the application
+3. Go! :rocket:
+
+## Test API
+You can test the API by [Swagger Documentation](http://localhost:8000/medical-api-docs)
 
 ## `Makefile` tips
 * `make execute` - This command will execute the following commands:
