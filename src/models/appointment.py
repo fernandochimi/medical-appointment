@@ -34,3 +34,20 @@ async def get_appointment(conn, request):
         raise RecordNotFound(msg.format(appointment_id))
 
     return appointment_data
+
+
+async def create_appointment(conn, data):
+    result = await conn.execute(
+        appointment.insert()
+        .returning(*appointment.c)
+        .values(
+            patient_id=data["patient_id"],
+            procedure_id=data["procedure_id"],
+            start_date=data["start_date"],
+            end_date=data["end_date"],
+        )
+    )
+    record = await result.fetchall()
+    if not record:
+        msg = "Appointment not created"
+        raise RecordNotFound(msg)

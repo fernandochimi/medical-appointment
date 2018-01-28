@@ -1,5 +1,8 @@
 # coding: utf-8
 import os
+import datetime
+import decimal
+import json
 
 
 def import_env_variables(value):
@@ -15,3 +18,16 @@ def validate_int_values(value):
 
 def error_json(status, msg):
     return {"status": status, "message": msg}
+
+
+def json_encoder(obj):
+    if isinstance(obj, datetime.time):
+        return obj.isoformat()
+    if isinstance(obj, datetime.datetime):
+        return obj.isoformat()
+    if isinstance(obj, decimal.Decimal):
+        return float(obj)
+
+
+def json_handler(result):
+    return json.loads(json.dumps(result, default=json_encoder))
