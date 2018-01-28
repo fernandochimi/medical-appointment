@@ -53,3 +53,37 @@ async def create_patient(conn, data):
         msg = "Patient not created"
         raise RecordNotFound(msg)
     return record
+
+
+async def alter_patient(conn, request, data):
+    patient_id = validate_int_values(request.match_info["patient_id"])
+    result = await conn.execute(
+        patient.update()
+        .returning(*patient.c)
+        .where(patient.c.id == patient_id)
+        .values(
+            first_name=data["firstName"],
+            last_name=data["lastName"],
+            cpf=data["cpf"],
+            date_of_birth=data["dateOfBirth"],
+            gender=data["gender"],
+            active=data["active"],
+        )
+    )
+    record = await result.fetchone()
+    if not record:
+        msg = "Patient with id: {} does not exists"
+        raise RecordNotFound(msg.format(patient_id))
+    return record
+
+
+async def delete_patient(conn, request, data):
+    patient_id = validate_int_values(request.match_info["patient_id"])
+    result = await conn.execute(
+        patient.delete()
+        .where(patient.c.id == patient_id)
+    )
+    if not result:
+        msg = "Patient with id: {} does not exists"
+        raise RecordNotFound(msg.format(patient_id))
+    return result

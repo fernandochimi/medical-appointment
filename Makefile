@@ -10,6 +10,9 @@ start:
 startd:
 		${DCMP} up -d
 
+stoppsql:
+		sudo service postgresql stop
+
 stop:
 		${DCMP} stop
 
@@ -21,6 +24,7 @@ clean:
 
 execute:
 		sudo chown -R $(USER):$(USER) .
+		${MAKE} stoppsql
 		${MAKE} clean
 		${MAKE} build
 		${MAKE} startd
