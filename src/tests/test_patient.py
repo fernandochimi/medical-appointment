@@ -1,13 +1,12 @@
 # coding: utf-8
-from aiohttp.test_utils import unittest_run_loop
 from aiohttp import web
 
-from src.tests import BaseTest
+from .resources.patients import PatientResource
 
 
-class PatientTest(BaseTest):
-    @unittest_run_loop
-    async def test_01_get_patients(self):
-        request = await self.client.request("GET", "/patients")
-        print(request)
-        assert request.status == 200
+async def test_01_get_patients(raw_test_server):
+    app = web.Application()
+    app.router.add.get("/patients", PatientResource().get_list)
+    client = await test_client(app)
+    resp = await client.get('/patients')
+    assert resp.status == 200

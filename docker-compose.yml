@@ -26,7 +26,8 @@ services:
   medical_apppointment:
     build: .
     restart: on-failure
-    command: sh -c "python -m unittest discover src/tests && python src/run.py"
+    # command: python src/run.py
+    command: sh -c "coverage run -m unittest -v && python src/run.py"
     volumes:
       - .:/medical-appointment
     ports:
