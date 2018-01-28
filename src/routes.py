@@ -1,6 +1,7 @@
 # coding: utf-8
 from resources.appointments import AppointmentResource
 from resources.patients import PatientResource
+from resources.procedures import ProcedureResource
 
 APPOINTMENTS = AppointmentResource().get_list
 APPOINTMENT_DETAIL = AppointmentResource().get_detail
@@ -13,6 +14,12 @@ PATIENT_DETAIL = PatientResource().get_detail
 CREATE_PATIENT = PatientResource().register
 ALTER_PATIENT = PatientResource().alter
 DELETE_PATIENT = PatientResource().delete
+
+PROCEDURES = ProcedureResource().get_list
+PROCEDURE_DETAIL = ProcedureResource().get_detail
+CREATE_PROCEDURE = ProcedureResource().register
+ALTER_PROCEDURE = ProcedureResource().alter
+DELETE_PROCEDURE = ProcedureResource().delete
 
 
 def setup_routes(app):
@@ -35,3 +42,13 @@ def setup_routes(app):
                        ALTER_PATIENT, name="alter_patient")
     app.router.add_delete(r"/patients/{patient_id}",
                           DELETE_PATIENT, name="delete_patient")
+
+    app.router.add_get(r"/procedures", PROCEDURES, name="procedures")
+    app.router.add_get(r"/procedures/{procedure_id}",
+                       PROCEDURE_DETAIL, name="procedure_detail")
+    app.router.add_post(r"/procedures",
+                        CREATE_PROCEDURE, name="create_procedures")
+    app.router.add_put(r"/procedures/{procedure_id}",
+                       ALTER_PROCEDURE, name="alter_procedure")
+    app.router.add_delete(r"/procedures/{procedure_id}",
+                          DELETE_PROCEDURE, name="delete_procedure")
