@@ -4,6 +4,7 @@ import logging
 import sys
 
 from aiohttp import web
+from aiohttp_swagger import *
 
 from models import init_pg, close_pg
 from routes import setup_routes
@@ -16,6 +17,17 @@ def init(loop, argv):
     app.on_startup.append(init_pg)
     app.on_cleanup.append(close_pg)
     setup_routes(app)
+
+    setup_swagger(
+        app,
+        description="""
+        This is a API that allows to create,
+        alter, consult and delete medical appointments,
+        procedures and patients.
+        """,
+        title="Medical Appointments",
+        api_version="1.0.0",
+        swagger_url="/medical-api-docs")
 
     return app
 
