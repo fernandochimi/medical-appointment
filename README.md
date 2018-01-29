@@ -11,6 +11,8 @@ Check if you have a Git in your machine. If don't, please install [Git](https://
 2. Run `make execute` to build and run the application
 3. Go! :rocket:
 
+PS: The file `api.env` is for environment values from the application. The default values corresponds to host/port of application and the database pre defined values.
+
 ## Test API
 You can test the API by [Swagger Documentation](http://localhost:8000/medical-api-docs). This link will works when you run application.
 
