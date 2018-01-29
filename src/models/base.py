@@ -26,5 +26,9 @@ class RecordNotFound(Exception):
     """Requested record in database was not found"""
 
 
+class DateValidationError(Exception):
+    """Requested date in invalid"""
+
+
 class DataTypeError(Exception):
     """Data not compatible"""

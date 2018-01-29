@@ -31,3 +31,7 @@ def json_encoder(obj):
 
 def json_handler(result):
     return json.loads(json.dumps(result, default=json_encoder))
+
+
+def _format_string_to_datetime(date):
+    return datetime.datetime.strptime(date, "%Y-%m-%dT%H:%M:%S")
