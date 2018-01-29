@@ -12,7 +12,7 @@ Check if you have a Git in your machine. If don't, please install [Git](https://
 3. Go! :rocket:
 
 ## Test API
-You can test the API by [Swagger Documentation](http://localhost:8000/medical-api-docs)
+You can test the API by [Swagger Documentation](http://localhost:8000/medical-api-docs). This link will works when you run application.
 
 ## `Makefile` tips
 * `make execute` - This command will execute the following commands:
