@@ -1,7 +1,7 @@
 # coding: utf-8
 from aiohttp import web
 
-from models import RecordNotFound, DataTypeError
+from models.base import RecordNotFound, DataTypeError
 from models.procedure import alter_procedure, create_procedure,\
     delete_procedure, get_procedure, procedure
 from utils import json_handler

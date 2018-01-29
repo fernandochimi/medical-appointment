@@ -6,7 +6,7 @@ import sys
 from aiohttp import web
 from aiohttp_swagger import *
 
-from models import init_pg, close_pg
+from models.base import init_pg, close_pg
 from routes import setup_routes
 from utils import import_env_variables
 

@@ -1,7 +1,7 @@
 # coding: utf-8
 from sqlalchemy import Boolean, Column, Integer, String, Table
 
-from models import META, RecordNotFound
+from models.base import META, RecordNotFound
 from utils import validate_int_values
 
 

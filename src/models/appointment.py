@@ -2,7 +2,7 @@
 from aiohttp import web
 from sqlalchemy import Column, DateTime, ForeignKey, func, Integer, Table
 
-from models import META, RecordNotFound, DataTypeError
+from models.base import META, RecordNotFound, DataTypeError
 from utils import validate_int_values
 
 

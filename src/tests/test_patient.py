@@ -1,12 +1,21 @@
-# coding: utf-8
-from aiohttp import web
+# # coding: utf-8
+# import unittest
 
-from .resources.patients import PatientResource
+# from aiohttp.test_utils import RawTestServer
+# from aiohttp import web
 
 
-async def test_01_get_patients(raw_test_server):
-    app = web.Application()
-    app.router.add.get("/patients", PatientResource().get_list)
-    client = await test_client(app)
-    resp = await client.get('/patients')
-    assert resp.status == 200
+# # class MyAppTestCase(AioHTTPTestCase):
+# async def test_my_server(test_server):
+#     app = web.Application()
+#     server = await test_server(app)
+
+# if __name__ == '__main__':
+#     unittest.main()
+"""HTTP client functional tests against aiohttp.web server"""
+import unittest
+
+
+class TestPatient(unittest.TestCase):
+    def test_01(self):
+        self.assertEqual('foo'.upper(), 'FOO')

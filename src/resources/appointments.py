@@ -1,7 +1,7 @@
 # coding: utf-8
 from aiohttp import web
 
-from models import RecordNotFound, DataTypeError
+from models.base import RecordNotFound, DataTypeError
 from models.appointment import appointment, get_appointment,\
     create_appointment
 from utils import json_handler

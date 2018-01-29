@@ -1,7 +1,7 @@
 # coding: utf-8
 from aiohttp import web
 
-from models import RecordNotFound, DataTypeError
+from models.base import RecordNotFound, DataTypeError
 from models.patient import alter_patient, create_patient,\
     delete_patient, get_patient, patient
 from utils import json_handler
