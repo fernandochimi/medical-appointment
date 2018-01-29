@@ -1,0 +1,345 @@
+swagger: "2.0"
+info:
+  description: This is a API that allows to create, alter, consult and delete medical appointments, procedures and patients.
+  version: "1.0.0"
+  title: Medical Appointments
+  contact:
+    name: fernando.chimicoviaki@gmail.com
+basePath: /
+schemes:
+  - http
+paths:
+  /appointments:
+    get:
+      tags:
+      - appointments
+      summary: List appointments
+      description: This resource list all appointments
+      produces:
+        - application/json
+      schema:
+        type: object
+        properties:
+          id:
+            type: integer
+          patientId:
+            type: integer
+          procedureId:
+            type: integer
+          startDate:
+            type: string
+            format: date-time
+          endDate:
+            type: string
+            format: date-time
+      responses:
+        "200":
+          description: ok
+    post:
+      tags:
+      - appointments
+      summary: Register appointment
+      description: This resource register a appointment
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          type: string
+          schema:
+            properties:
+              patientId:
+                type: integer
+              procedureId:
+                type: integer
+              startDate:
+                type: string
+                format: date-time
+              endDate:
+                type: string
+                format: date-time
+      responses:
+        "302":
+          description: ok
+  /appointments/{appointment_id}:
+    get:
+      tags:
+      - appointments
+      summary: Detail appointment
+      description: This resource detail a specific appointments
+      produces:
+        - application/json
+      schema:
+        type: object
+        properties:
+          id:
+            type: integer
+          patientId:
+            type: integer
+          procedureId:
+            type: integer
+          startDate:
+            type: string
+            format: date-time
+          endDate:
+            type: string
+            format: date-time
+      responses:
+        "200":
+          description: ok
+    put:
+      tags:
+      - appointments
+      summary: Alter appointment
+      description: This resource alter a specific appointment
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          type: string
+          schema:
+            properties:
+              patientId:
+                type: integer
+              procedureId:
+                type: integer
+              startDate:
+                type: string
+                format: date-time
+              endDate:
+                type: string
+                format: date-time
+      responses:
+        "302":
+          description: ok
+    delete:
+      tags:
+      - appointments
+      summary: Delete appointment
+      description: This resource delete a specific appointment
+      produces:
+        - application/json
+      responses:
+        "204":
+          description: ""
+  /patients:
+    get:
+      tags:
+      - patients
+      summary: List patients
+      description: This resource list all patients
+      produces:
+        - application/json
+      schema:
+        type: object
+        properties:
+          id:
+            type: integer
+          first_name:
+            type: string
+          last_name:
+            type: string
+          cpf:
+            type: string
+          date_of_birth:
+            type: string
+            format: date
+          gender:
+            type: boolean
+          active:
+            type: boolean
+      responses:
+        "200":
+          description: ok
+    post:
+      tags:
+      - patients
+      summary: Register patient
+      description: This resource register a patient
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          type: string
+          schema:
+            type: object
+            properties:
+              first_name:
+                type: string
+              last_name:
+                type: string
+              cpf:
+                type: string
+              date_of_birth:
+                type: string
+                format: date
+              gender:
+                type: boolean
+              active:
+                type: boolean
+      responses:
+        "302":
+          description: ok
+  /patients/{patient_id}:
+    get:
+      tags:
+      - patients
+      summary: Detail patient
+      description: This resource detail a specific patients
+      produces:
+        - application/json
+      schema:
+        type: object
+        properties:
+          id:
+            type: integer
+          first_name:
+            type: string
+          last_name:
+            type: string
+          cpf:
+            type: string
+          date_of_birth:
+            type: string
+            format: date
+          gender:
+            type: boolean
+          active:
+            type: boolean
+      responses:
+        "200":
+          description: ok
+    put:
+      tags:
+      - patients
+      summary: Alter patient
+      description: This resource alter a specific patient
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          type: string
+          schema:
+            type: object
+            properties:
+              first_name:
+                type: string
+              last_name:
+                type: string
+              cpf:
+                type: string
+              date_of_birth:
+                type: string
+                format: date
+              gender:
+                type: boolean
+              active:
+                type: boolean
+      responses:
+        "302":
+          description: ok
+    delete:
+      tags:
+      - patients
+      summary: Delete patient
+      description: This resource delete a specific patient
+      produces:
+        - application/json
+      responses:
+        "204":
+          description: ""
+  /procedures:
+    get:
+      tags:
+      - procedures
+      summary: List procedures
+      description: This resource list all procedures
+      produces:
+        - application/json
+      schema:
+        type: object
+        properties:
+          id:
+            type: integer
+          name:
+            type: string
+          active:
+            type: boolean
+      responses:
+        "200":
+          description: ok
+    post:
+      tags:
+      - procedures
+      summary: Register procedure
+      description: This resource register a procedure
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          type: string
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+              active:
+                type: boolean
+      responses:
+        "302":
+          description: ok
+  /procedures/{procedure_id}:
+    get:
+      tags:
+      - procedures
+      summary: Detail procedure
+      description: This resource detail a specific procedures
+      produces:
+        - application/json
+      schema:
+        type: object
+        properties:
+          id:
+            type: integer
+          name:
+            type: string
+          active:
+            type: boolean
+      responses:
+        "200":
+          description: ok
+    put:
+      tags:
+      - procedures
+      summary: Alter procedure
+      description: This resource alter a specific procedure
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          type: string
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+              active:
+                type: boolean
+      responses:
+        "302":
+          description: ok
+    delete:
+      tags:
+      - procedures
+      summary: Delete procedure
+      description: This resource delete a specific procedure
+      produces:
+        - application/json
+      responses:
+        "204":
+          description: ""

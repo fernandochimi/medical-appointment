@@ -20,13 +20,7 @@ def init(loop, argv):
 
     setup_swagger(
         app,
-        description="""
-        This is a API that allows to create,
-        alter, consult and delete medical appointments,
-        procedures and patients.
-        """,
-        title="Medical Appointments",
-        api_version="1.0.0",
+        swagger_from_file="./docs/medical_api.yaml",
         swagger_url="/medical-api-docs")
 
     return app

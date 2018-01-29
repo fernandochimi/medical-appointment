@@ -28,9 +28,3 @@ execute:
 		${MAKE} clean
 		${MAKE} build
 		${MAKE} startd
-
-html:
-		${DCMP} -p $(PROJECT_ID) run medical_apppointment coverage html
-		# Uncomment open ... if you use Mac
-		# open htmlcov/index.html
-		xdg-open htmlcov/index.html

@@ -18,8 +18,9 @@ You can test the API by [Swagger Documentation](http://localhost:8000/medical-ap
 * `make execute` - This command will execute the following commands:
 	* `sudo chown -R $(USER):$(USER) .` - Attribute permisions to this directory for manipulating files of project.
 	* `clean` - Clean useless files in the project structure.
+	* `stoppsql` - This command will stop the PostgreSQL if it runs in your machine.
 	* `build` - It will be build the project container.
-	* `start` - This command will execute the container in background.
-	* `test` - This command will check if exist a errors in the project.
-	* `report` - This command will generate a report from test.
+	* `startd` - This command will execute the container in background.
+* `start` - This command will execute the container and exhibit logs.
+* `stop` - This command will stop the container.
 * `make html` - This command will generate a HTML report from Coverage.

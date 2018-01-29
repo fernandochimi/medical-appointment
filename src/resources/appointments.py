@@ -1,5 +1,6 @@
 # coding: utf-8
 from aiohttp import web
+from aiohttp_swagger import *
 
 from models.base import RecordNotFound, DataTypeError
 from models.appointment import appointment, get_appointment,\
