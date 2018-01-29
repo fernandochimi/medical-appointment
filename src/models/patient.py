@@ -42,7 +42,7 @@ async def create_patient(conn, data):
         .values(
             first_name=data["firstName"],
             last_name=data["lastName"],
-            cpf=data["cpf"],
+            cpf=data["cpf"].replace("-", "").replace(".", ""),
             date_of_birth=data["dateOfBirth"],
             gender=data["gender"],
             active=data["active"],

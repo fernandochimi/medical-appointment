@@ -3,7 +3,9 @@ aiohttp==2.3.9
 aiohttp-swagger==1.0.0
 aiopg==0.13.2
 alembic==0.9.7
+asynctest==0.11.0
 coverage==4.4.2
 cchardet==2.1.1
-pytest-aiohttp==0.3.0
+pytest==3.3.1
+testing-aiohttp==0.0.7
 SQLAlchemy==1.2.1

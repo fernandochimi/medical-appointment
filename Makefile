@@ -18,7 +18,6 @@ stop:
 
 clean:
 		find . -name "*.pyc" -exec rm -rf {} \;
-		find . -name "__pycache__" -exec rm -rf {} \;
 		rm -rf htmlcov/
 		rm -rf .coverage
 		rm -rf *.log
@@ -31,7 +30,7 @@ execute:
 		${MAKE} startd
 
 html:
-		${DCMP} -p $(PROJECT_ID) run web coverage html
+		${DCMP} -p $(PROJECT_ID) run medical_apppointment coverage html
 		# Uncomment open ... if you use Mac
 		# open htmlcov/index.html
 		xdg-open htmlcov/index.html

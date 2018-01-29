@@ -23,7 +23,7 @@ def upgrade():
                   unique=True, index=True, nullable=False),
         sa.Column("first_name", sa.String(255), nullable=False),
         sa.Column("last_name", sa.String(255), nullable=False),
-        sa.Column("cpf", sa.String(14), nullable=False),
+        sa.Column("cpf", sa.String(11), nullable=False),
         sa.Column("date_of_birth", sa.Date, nullable=False),
         sa.Column("gender", sa.Boolean, nullable=False),
         sa.Column("active", sa.Boolean, default=True, nullable=False)

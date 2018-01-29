@@ -26,8 +26,7 @@ services:
   medical_apppointment:
     build: .
     restart: on-failure
-    # command: python src/run.py
-    command: sh -c "coverage run --omit="**migrations**,**tests**" -m unittest discover -v && python src/run.py"
+    command: sh -c "coverage run --omit="**migrations**,**tests**" -m unittest discover -s src -v && coverage report && python src/run.py"
     volumes:
       - .:/medical-appointment
     ports:
